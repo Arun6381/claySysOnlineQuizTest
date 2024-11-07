@@ -1,0 +1,62 @@
+﻿@*@model IEnumerable<ClaysysOnlineQuizTest.Models.Test>
+
+@{
+    ViewBag.Title = "GetTestByTopicId";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>GetTestByTopicId</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TestName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedByAdminID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TopicID)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedByAdminID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TopicID)
+        </td>
+
+        <td>
+
+            @Html.ActionLink("Delete", "Delete", new { id = item.TestID })
+            <a href="@Url.Action("GetQuestionsByTest","Question")">QuestionName</a>
+        </td>
+       
+
+    </tr>
+}
+
+</table>*@

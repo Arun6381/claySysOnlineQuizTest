@@ -1,0 +1,76 @@
+﻿@model ClaysysOnlineQuizTest.Models.Test
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+<link href="~/Content/CustomCss/Admin/test.css" rel="stylesheet" />
+<link href="~/Content/CustomCss/CreateTest.css" rel="stylesheet" />
+<h2 class="heading">Create Test</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-container">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TestName, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.TestName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.TestName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Upload Image", htmlAttributes: new { @class = "control-label" })
+        <input type="file" id="imageFile" accept="image/*" class="form-control" />
+        <input type="hidden" id="testImage" name="testImage" />
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CreatedByAdminID, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.CreatedByAdminID, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.CreatedByAdminID, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <div class="createbtn">
+            <input type="submit" value="Create" class="btn" />
+        </div>
+    </div>
+
+    <div style="text-align:center;">
+        @Html.ActionLink("Back", "Index","Topic")
+    </div>
+</div>
+}
+
+<script src="~/Scripts/ClaySysQuizTest/Imageconverter.js"></script>
+
+
+
+
+
+@*<div class="form-group">
+        @Html.LabelFor(model => model.TopicID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TopicID, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TopicID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TopicName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TopicName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TopicName, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+
+

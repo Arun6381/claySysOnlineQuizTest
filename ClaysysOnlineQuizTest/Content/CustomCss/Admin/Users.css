@@ -1,0 +1,40 @@
+﻿.table-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    border: 1px solid orange;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.table-header {
+    background-color: orange;
+    color: white;
+    display: flex;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.table-row {
+    display: flex;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.table-cell {
+    flex: 1;
+    padding: 10px;
+    text-align: left;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.delete-link {
+    color: orange;
+}
+
+    .delete-link:hover {
+        text-decoration: underline;
+    }

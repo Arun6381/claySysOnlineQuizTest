@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ClaysysOnlineQuizTest.Models.Question>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+<link href="~/Content/CustomCss/Admin/Getquesbytest.css" rel="stylesheet" />
+<h2 style="text-align: center;margin-top:-20px; color:orange;">Questions</h2> <!-- Center the heading -->
+
+@*<p style="text-align: center;">
+    @Html.ActionLink("Add Question", "Add", null, new { @class = "btn btn-primary" })
+</p>*@
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="question-container">
+            <div class="question-item">
+                <strong>Question ID:</strong> @Html.DisplayFor(modelItem => item.QuestionID)
+            </div>
+            <div class="question-item">
+                <strong>Test Name:</strong> @Html.DisplayFor(modelItem => item.TestName)
+            </div>
+            <div class="question-item">
+                <strong>Question Text:</strong> @Html.DisplayFor(modelItem => item.QuestionText)
+            </div>
+            <div class="question-item">
+                <strong>Option 1:</strong> @Html.DisplayFor(modelItem => item.Option1)
+            </div>
+            <div class="question-item">
+                <strong>Option 2:</strong> @Html.DisplayFor(modelItem => item.Option2)
+            </div>
+            <div class="question-item">
+                <strong>Option 3:</strong> @Html.DisplayFor(modelItem => item.Option3)
+            </div>
+            <div class="question-item">
+                <strong>Option 4:</strong> @Html.DisplayFor(modelItem => item.Option4)
+            </div>
+            <div class="question-item">
+                <strong>Correct Option:</strong> @Html.DisplayFor(modelItem => item.CorrectOption)
+            </div>
+            <div class="question-item">
+                <strong>Score:</strong> @Html.DisplayFor(modelItem => item.Score)
+            </div>
+            <div class="question-item">
+                <strong>Created At:</strong> @Html.DisplayFor(modelItem => item.CreatedAt)
+            </div>
+            <div class="btn">
+                @Html.ActionLink("Confirm Delete", "Delete", new { id = item.QuestionID }, new { @class = "btn btn-danger btn-sm" })
+            </div>
+           
+        </div>
+    }
+</div>
+

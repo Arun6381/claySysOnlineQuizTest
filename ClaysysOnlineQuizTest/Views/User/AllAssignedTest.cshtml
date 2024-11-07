@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ClaysysOnlineQuizTest.Models.AssignTest>
+
+@{
+    ViewBag.Title = "All Assigned Tests";
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+    var sessionValue = ViewBag.SessionValue;
+}
+<link href="~/Content/CustomCss/User/Test.css" rel="stylesheet" />
+
+<h2 class="heading">Assigned Test for @Session["UserName"]</h2>
+
+@if (ViewBag.NoAssignedTestsMessage != null)
+{
+    <p>@ViewBag.NoAssignedTestsMessage</p>
+}
+else
+{
+    <div class="assigned-tests-container">
+        @foreach (var test in Model)
+        {
+            <div class="test-card">
+                <div class="test-image">
+                    @if (string.IsNullOrEmpty(test.TestImage))
+                    {
+                        <img src="~/Content/images/default-image.png" />
+                    }
+                    else
+                    {
+                        <img src="@test.TestImage" alt="Test Image" style="max-width:150px; max-height:150px;" />
+                    }
+                </div>
+                <div class="test-details">
+                    <h3>@test.TestName</h3>
+                    <p>@test.Description</p>
+                    <p>Assigned At: @test.AssignedAt.ToString("g")</p>
+                    @using (Html.BeginForm("AssignedQuestions", "User", FormMethod.Post))
+                    {
+                        <input type="hidden" name="emailAddress" value="@sessionValue" />
+                        <input type="hidden" name="TestID" value="@test.TestID" />
+                        <button type="submit" class="btn btn-primary">Take Test</button>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}

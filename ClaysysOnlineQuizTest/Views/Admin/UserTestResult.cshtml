@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ClaysysOnlineQuizTest.Models.UserTestResult>
+
+@{
+    ViewBag.Title = "User Test Result";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+<link href="~/Content/CustomCss/Admin/userresult.css" rel="stylesheet" />
+<h2 style="text-align: center;">User Test Results</h2>
+
+<div style="text-align: center; margin-bottom: 20px;">
+    <label for="sortOrder">Sort by Score:</label>
+    <select id="sortOrder" onchange="sortResults()">
+        <option value="asc">Lowest to Highest</option>
+        <option value="desc">Highest to Lowest</option>
+    </select>
+</div>
+
+<div id="resultsContainer" class="table-container">
+    <div class="table-header">
+        @*<div class="table-cell"><strong>Test Result ID</strong></div>
+        <div class="table-cell"><strong>User ID</strong></div>*@
+        <div class="table-cell"><strong>Email Address</strong></div>
+        <div class="table-cell"><strong>Test Name</strong></div>
+        <div class="table-cell"><strong>Total Score</strong></div>
+        <div class="table-cell"><strong>Completed At</strong></div>
+    </div>
+
+    @foreach (var item in Model)
+    {
+        <div class="table-row" data-score="@item.TotalScore">
+            @*<div class="table-cell">@Html.DisplayFor(modelItem => item.TestResultID)</div>
+            <div class="table-cell">@Html.DisplayFor(modelItem => item.UserID)</div>*@
+            <div class="table-cell">@Html.DisplayFor(modelItem => item.EmailAddress)</div>
+            <div class="table-cell">@Html.DisplayFor(modelItem => item.TestName)</div>
+            <div class="table-cell">@Html.DisplayFor(modelItem => item.TotalScore)</div>
+            <div class="table-cell">@Html.DisplayFor(modelItem => item.CompletedAt)</div>
+        </div>
+    }
+</div>
+<script src="~/Scripts/ClaySysQuizTest/Filterscore.js"></script>
+

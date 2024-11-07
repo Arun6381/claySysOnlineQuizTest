@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "Learning";
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+<link href="~/Content/CustomCss/User/learning.css" rel="stylesheet" />
+<style>
+    .mainsection {
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    color: #000;
+    margin-bottom:120px;
+}
+
+.heading {
+ text-align:center;
+    color: orange;
+    margin-bottom: 20px;
+}
+.btn a {
+    color: white;
+    text-decoration: none;
+}
+.btn {
+    background-color: orange;
+    font-size:1rem;
+    font-weight:bold;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn:hover{
+    background-color:darkorange;
+}
+.section {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 7px orange;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+}
+
+    .section h3 {
+        color: orange;
+        border-bottom: 2px solid orange;
+        padding-bottom: 10px;
+    }
+
+    .section p {
+        margin: 10px 0;
+    }
+
+    .section ul {
+        list-style-type: disc;
+        margin: 10px 0 20px 20px;
+    }
+
+code {
+    background-color: #e8e8e8;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+}
+</style>
+<h2 class="heading">Learning</h2>
+<section class="mainsection">
+    <div class="section" id="html-basics">
+        <h3>HTML Basics</h3>
+        <p>HTML (HyperText Markup Language) is the foundation of web pages. It provides the structure and layout for content by using <em>elements</em>, which are typically defined within tags.</p>
+        <p>HTML elements are made up of tags (e.g., <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;a&gt;</code>). Each tag usually has an opening and closing part, enclosing the content that defines how it will appear on a webpage. <code>&lt;p&gt;</code> tags, for instance, define a paragraph, while <code>&lt;a&gt;</code> is used to create a hyperlink.</p>
+        <p>HTML documents start with a <code>&lt;!DOCTYPE html&gt;</code> declaration, which ensures that the document adheres to HTML5 standards. The main document structure includes:</p>
+        <ul>
+            <li><code>&lt;html&gt;</code>: Encloses the entire HTML content.</li>
+            <li><code>&lt;head&gt;</code>: Contains metadata like the page title, links to stylesheets, and scripts.</li>
+            <li><code>&lt;body&gt;</code>: Holds the main content displayed on the page.</li>
+
+        </ul>
+        <button class="btn"><a href="https://www.w3schools.com/html/default.asp">Learn More&rarr; </a></button>
+    </div>
+
+    <div class="section" id="css-basics">
+        <h3>CSS Basics</h3>
+        <p>CSS (Cascading Style Sheets) is a styling language that controls the look and feel of a web page, including layout, colors, fonts, and more. It makes HTML content visually appealing.</p>
+        <p>CSS styles can be applied in three ways:</p>
+        <ul>
+            <li><strong>Inline</strong>: Directly within an HTML element using the <code>style</code> attribute.</li>
+            <li><strong>Internal</strong>: Placed in the <code>&lt;head&gt;</code> of an HTML document inside a <code>&lt;style&gt;</code> tag.</li>
+            <li><strong>External</strong>: Defined in a separate <code>.css</code> file, which is then linked in the HTML <code>&lt;head&gt;</code>, allowing for more organized code.</li>
+        </ul>
+        <p>CSS rules start with a selector (e.g., a tag, class, or ID) and contain a set of declarations in curly braces. Each declaration consists of a property and a value. For example, <code>color: red;</code> changes the text color to red. Selectors make it easy to style specific elements throughout a webpage.</p>
+        <button class="btn"><a href="https://www.w3schools.com/css/default.asp">Learn More&rarr; </a></button>
+
+    </div>
+
+    <div class="section" id="js-basics">
+        <h3>JavaScript Basics</h3>
+        <p>JavaScript is a programming language that enables interactive features on web pages, like animations, form validations, and dynamic content updates. While HTML and CSS structure and style content, JavaScript controls behavior.</p>
+        <p>JavaScript can be added inline in an HTML document using the <code>&lt;script&gt;</code> tag or in an external <code>.js</code> file linked within the HTML <code>&lt;head&gt;</code> or at the end of the <code>&lt;body&gt;</code>. Linking externally keeps JavaScript code separate, making it easier to maintain.</p>
+        <p>JavaScript uses variables to store data, functions to encapsulate reusable code, and control structures (e.g., <code>if</code> statements and loops) to manage the flow of code. It interacts with HTML elements via the Document Object Model (DOM), allowing developers to change the content, style, and layout in response to user actions.</p>
+        <button class="btn"><a href="https://www.w3schools.com/js/default.asp">Learn More&rarr; </a></button>
+
+    </div>
+
+    <div class="section" id="csharp-basics">
+        <h3>C# Basics</h3>
+        <p>C# (pronounced "C-sharp") is a programming language created by Microsoft. It’s widely used for creating desktop applications, backend services, and game development (notably with Unity).</p>
+        <p>C# syntax resembles other C-style languages, which is helpful for those with a programming background. It emphasizes object-oriented principles such as encapsulation, inheritance, and polymorphism. The <code>Main</code> method is the starting point of most C# programs, defining where execution begins.</p>
+        <p>C# is known for its efficiency, making it ideal for large-scale applications. It also supports asynchronous programming, which is essential for performance in applications with multiple operations running simultaneously.</p>
+        <span class="btn"><a href="https://www.w3schools.com/cs/index.php">Learn More&rarr; </a></span>
+
+    </div>
+</section>

@@ -1,0 +1,95 @@
+﻿.admin-list {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    border: 1px solid orange;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+}
+.heading{
+    text-align:center;
+    color:orange;
+}
+.admin-row {
+    display: flex;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+    .admin-row.header {
+        background-color: orange;
+        font-weight: bold;
+        color: white;
+    }
+
+.admin-cell {
+    flex: 1;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+}
+
+    .admin-cell:nth-child(1) { 
+        flex: 2;
+    }
+
+    .admin-cell:nth-child(4) { 
+        justify-content: flex-end;
+    }
+.btnaadd{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+.btn {
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: orange;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger {
+   color:orange;
+   border:1px solid orange;
+   transition:background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: darkorange;
+}
+
+.btn-danger:hover {
+    background-color: orange;
+    color:white;
+}
+
+@media (max-width: 600px) {
+    .admin-row {
+        flex-direction: column;
+    }
+
+    .admin-cell {
+        flex: 1 1 100%;
+        padding: 10px 0;
+    }
+
+        .admin-cell:before {
+            content: attr(data-label);
+            font-weight: bold;
+            width: 100%;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .admin-cell[data-label="Actions"] {
+            text-align: right;
+        }
+}

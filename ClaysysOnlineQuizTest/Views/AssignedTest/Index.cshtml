@@ -1,0 +1,124 @@
+﻿@model IEnumerable<ClaysysOnlineQuizTest.Models.AssignTest>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<link href="~/Content/CustomCss/Admin/Assignedtest.css" rel="stylesheet" />
+<span class="heading">@TempData["Message"]</span>
+<h2 class="heading">Assign a Test User</h2>
+
+<div class="mini-form">
+    <h3 class="heading">Assign Test</h3>
+    @using (Html.BeginForm("AssignTest", "AssignedTest", FormMethod.Post))
+    {
+        <div class="form-group position-relative">
+            <label for="email">User Email</label>
+            <input type="text" id="emailInput" name="emailAddress" placeholder="Search or select an email..." class="form-control" autocomplete="off" required>
+
+            <div id="emailDropdown" class="dropdown-menu" style="display: none;">
+                @foreach (var userEmail in ViewBag.UserEmails as List<string>)
+                {
+                    <div class="dropdown-item" data-value="@userEmail">@userEmail</div>
+                }
+            </div>
+        </div>
+
+        <div class="form-group position-relative">
+            <label for="testname">Test Name</label>
+            <input type="text" id="testnameInput" name="testName" placeholder="Search or select a test name..." class="form-control" autocomplete="off" required>
+
+            <div id="testDropdown" class="dropdown-menu" style="display: none;">
+                @foreach (var testName in ViewBag.TestNames as List<string>)
+                {
+                    <div class="dropdown-item" data-value="@testName">@testName</div>
+                }
+            </div>
+        </div>
+        <input type="submit" value="Assign Test" />
+    }
+</div>
+
+
+
+<h2 class="heading">Assigned Tests</h2>
+
+<section class="assigned-tests">
+    @foreach (var test in Model)
+    {
+        <div class="test-container">
+            <div><strong>Test Name:</strong> @test.TestName</div>
+            <div><strong>Email Address:</strong> @test.EmailAddress</div>
+            <div><strong>Assigned At:</strong> @test.AssignedAt</div>
+
+            @using (Html.BeginForm("RemoveTests", "AssignedTest", FormMethod.Post))
+            {
+                <input type="hidden" name="emailAddress" value="@test.EmailAddress" />
+                <input type="hidden" name="testName" value="@test.TestName" />
+                <input type="submit" value="Remove Test" class="btn" />
+            }
+        </div>
+    }
+</section>
+
+<style>
+    .dropdown-menu {
+        position: absolute;
+        width: 250px;
+        border: 1px solid orange;
+        max-height: 150px;
+        overflow-y: auto;
+        background-color: #fff;
+        z-index: 1000;
+    }
+
+    .dropdown-item {
+        padding: 8px;
+        cursor: pointer;
+    }
+
+        .dropdown-item:hover {
+            background-color: orange;
+            color: white;
+        }
+</style>
+<script>
+    function setupDropdown(inputId, dropdownId) {
+        const input = document.getElementById(inputId);
+        const dropdown = document.getElementById(dropdownId);
+        const dropdownItems = Array.from(dropdown.getElementsByClassName('dropdown-item'));
+
+        input.addEventListener('input', function () {
+            const query = input.value.toLowerCase();
+            dropdown.style.display = query ? 'block' : 'none';
+
+            dropdownItems.forEach(item => {
+                const value = item.getAttribute('data-value').toLowerCase();
+                item.style.display = value.includes(query) ? 'block' : 'none';
+            });
+        });
+
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', function () {
+                input.value = item.getAttribute('data-value');
+                dropdown.style.display = 'none';
+            });
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!input.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        input.addEventListener('focus', function () {
+            if (input.value === '') dropdown.style.display = 'block';
+        });
+    }
+
+    // Set up dropdowns for email and test name inputs
+    setupDropdown('emailInput', 'emailDropdown');
+    setupDropdown('testnameInput', 'testDropdown');
+
+</script>

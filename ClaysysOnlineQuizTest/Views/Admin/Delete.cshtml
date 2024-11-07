@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Delete Admin";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+
+<h2>Delete Admin</h2>
+
+<form asp-action="Delete" method="post">
+    <div class="form-group">
+        <label for="email">Admin Email</label>
+        <input type="email" class="form-control" id="email" name="email" required />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Delete Admin" class="btn btn-danger" />
+    </div>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="text-danger">
+            @ViewData.ModelState.Values.SelectMany(v => v.Errors).FirstOrDefault()?.ErrorMessage
+        </div>
+    }
+</form>
+
+<a href="@Url.Action("Index")">Back to List</a>
+
+

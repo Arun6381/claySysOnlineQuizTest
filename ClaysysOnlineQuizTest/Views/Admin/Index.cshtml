@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<link href="~/Content/CustomCss/Admin/index.css" rel="stylesheet" />
+<section class="sections">
+    <div id="assign-test">
+        <h2 class="heading">Assign Test</h2>
+        <p>
+            The admin can assign tests to individual users or groups of users. This involves selecting a test from a list of available tests and specifying the users who should complete it. This feature is essential for managing user access to tests, whether they are assessments, skill evaluations, or training modules.
+        </p>
+    </div>
+    <div>
+        <img src="~/Content/images/admin.jpg" class="images" />
+    </div>
+    <div id="remove-test">
+        <h2>Remove Test</h2>
+        <p>
+            If a test is no longer relevant or needs to be retracted, the admin can remove it from assigned users. This action could be used to prevent outdated or erroneous tests from being completed or to make room for updated content. Removing a test typically involves selecting the assigned users or groups from whom the test should be removed.
+        </p>
+    </div>
+
+    <div id="view-test-results">
+        <h2>View Test Results</h2>
+        <p>
+            The admin has the ability to view test results for all users who have completed their assigned tests. This includes access to each user’s scores, completion status, and possibly detailed performance data. By reviewing results, the admin can assess user performance, identify areas where users may need further training, and track overall engagement with the tests.
+        </p>
+    </div>
+
+    <div id="add-new-admin">
+        <h2>Add New Admin</h2>
+        <p>
+            The admin has the ability to add other users as admins, expanding the team with authorized personnel who can manage the platform. This involves providing necessary access rights and permissions, typically through a form where the admin enters new admin details (such as name, email, and password) and assigns an access level.
+        </p>
+    </div>
+
+    <div id="remove-admin">
+        <h2>Remove Admin</h2>
+        <p>
+            If needed, an admin can revoke access rights for any existing admin, effectively removing them from the admin role. This could be necessary for maintaining security or adjusting the team. Removing an admin often involves selecting the target admin and confirming the action to avoid accidental removals.
+        </p>
+    </div>
+
+    <div id="view-all-users">
+        <h2>View All Users</h2>
+        <p>
+            The admin has the ability to see a list of all users on the platform. This includes detailed user information, such as names, email addresses, registration dates, and test participation history. This view helps the admin monitor user activity, understand platform usage, and keep records up-to-date.
+        </p>
+    </div>
+
+    <div id="view-all-admins">
+        <h2>View All Admins</h2>
+        <p>
+            Similar to viewing users, the admin can see a list of all current admins. This includes information on each admin's role and access level, allowing the admin to keep track of the management structure and permissions across the platform.
+        </p>
+    </div>
+
+</section>
+

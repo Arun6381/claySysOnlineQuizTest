@@ -1,0 +1,90 @@
+﻿
+
+.testname {
+    text-align: center;
+    color: orange;
+    margin-bottom: 20px;
+}
+
+
+#timer {
+    text-align: center;
+    font-size: 1.2em;
+    color: #ff5722;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#quizForm {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.question {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px orange;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+    .question h4 {
+        color: #333;
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+
+label {
+    display: block;
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+button {
+    font-size: 1em;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#nextButton, #prevButton, #submitButton {
+    background-color: darkorange;
+    color: #fff;
+    margin: 10px;
+}
+
+    #nextButton:hover, #prevButton:hover, #submitButton:hover {
+        background-color: #ffb84d;
+    }
+
+#prevButton {
+    background-color:  darkorange;
+}
+
+    #prevButton:hover {
+        background-color: #ffb84d;
+    }
+
+#submitButton {
+    background-color: orange;
+}
+
+    #submitButton:hover {
+        background-color: darkorange;
+    }
+
+@media (max-width: 768px) {
+    #quizForm {
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}

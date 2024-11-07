@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ClaysysOnlineQuizTest.Models.Admin>
+
+@{
+    ViewBag.Title = "GetAllAdmins";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <script>
+        alert('@TempData["ErrorMessage"]');
+    </script>
+}
+
+<link href="~/Content/CustomCss/Admin/AdminList.css" rel="stylesheet" />
+<h2 class="heading">GetAllAdmins</h2>
+
+<p class="btnaadd">
+    @Html.ActionLink("Create New Admin", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<div class="admin-list">
+    <div class="admin-row header">
+        <div class="admin-cell">User Name</div>
+        <div class="admin-cell">Email Address</div>
+        <div class="admin-cell">Created At</div>
+        <div class="admin-cell">Actions</div>
+    </div>
+
+    @foreach (var item in Model)
+    {
+        <div class="admin-row">
+            <div class="admin-cell">@Html.DisplayFor(modelItem => item.UserName)</div>
+            <div class="admin-cell">@Html.DisplayFor(modelItem => item.EmailAddress)</div>
+            <div class="admin-cell">@Html.DisplayFor(modelItem => item.CreatedAt)</div>
+            <div class="admin-cell">
+                @Html.ActionLink("Delete", "Delete", new { id = item.AdminID }, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    }
+</div>
+
+

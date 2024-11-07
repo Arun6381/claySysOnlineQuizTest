@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ClaysysOnlineQuizTest.Models.Test>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+<link href="~/Content/CustomCss/Admin/TestIndex.css" rel="stylesheet" />
+<h2 class="heading">All The Tests</h2>
+
+<div class="test-container">
+    @foreach (var item in Model)
+    {
+        <div class="test-item">
+            <div class="test-field">
+                <strong>@Html.DisplayNameFor(model => model.TestName):</strong>
+                @Html.DisplayFor(modelItem => item.TestName)
+            </div>
+            <div class="test-field">
+                <strong>@Html.DisplayNameFor(model => model.Description):</strong>
+                @Html.DisplayFor(modelItem => item.Description)
+            </div>
+            <div class="test-field">
+                <strong>@Html.DisplayNameFor(model => model.CreatedAt):</strong>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </div>
+            <div class="test-field">
+                <strong>@Html.DisplayNameFor(model => model.CreatedByAdminID):</strong>
+                @Html.DisplayFor(modelItem => item.CreatedByAdminID)
+            </div>
+            <div class="test-field">
+                <strong>@Html.DisplayNameFor(model => model.TopicID):</strong>
+                @Html.DisplayFor(modelItem => item.TopicID)
+            </div>
+            <div class="test-field">
+                <strong>@Html.DisplayNameFor(model => model.TestImage):</strong>
+                @if (!string.IsNullOrEmpty(item.TestImage))
+                {
+                    <img src="@item.TestImage" alt="Test Image" class="test-image" /> <!-- Display the image -->
+                }
+                else
+                {
+                    <img src="~/Content/images/default-image.png" alt="Default Image" class="test-image" />
+                }
+            </div>
+            <div class="test-actions">
+                <span class="action-link">
+                    @Html.ActionLink("Get Questions", "GetQuestionsByTest", "Question", new { testName = item.TestName }, null)
+                </span>
+                <span class="action-link">
+                    @Html.ActionLink("Create Question", "Add", "Question", new { testName = item.TestName }, null)
+                </span>
+                <span class="action-link">
+                    @Html.ActionLink("Delete", "DeleteConfirmed", new { TestID = item.TestID })
+                </span>
+            </div>
+
+        </div>
+    }
+</div>
+
+

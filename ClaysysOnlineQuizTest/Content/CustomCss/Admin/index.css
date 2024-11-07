@@ -1,0 +1,74 @@
+﻿
+
+section {
+    max-width: 900px;
+    margin: 5px auto;
+    padding: 20px;
+}
+
+div {
+    margin-bottom: 10px;
+    padding: 10px;
+ }
+.heading {
+    font-size: 1.5em;
+    color: orange;
+   text-align:center;
+}
+.images {
+    width:900px;
+    max-width: 80%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #555;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #695205;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: orange;
+    border-radius: 12px;
+}
+
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: orange;
+        border-radius: 12px;
+    }
+@media (max-width: 768px) {
+    section {
+        padding: 10px;
+    }
+
+    div {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    p {
+        font-size: 0.9em;
+    }
+}

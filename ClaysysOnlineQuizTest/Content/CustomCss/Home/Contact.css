@@ -1,0 +1,175 @@
+﻿.body {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnsa {
+    margin-top: 40px;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    background-color: #d48610;
+    transition: background-color 0.3s ease;
+}
+
+    .btnsa:hover {
+        background-color: #e3b477;
+    }
+
+form {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px orange;
+    max-width: 400px;
+    width: 100%;
+}
+
+    form label {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 8px;
+        display: block;
+        color: #333;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        transition: border-color 0.3s ease;
+    }
+
+        form input[type="text"]:focus,
+        form input[type="email"]:focus,
+        form textarea:focus {
+            border-color: #f0a637;
+            outline: none;
+        }
+
+    form textarea {
+        resize: none;
+        height: 150px;
+    }
+
+    form input[type="submit"] {
+        background: #d48610;
+        color: white;
+        border: none;
+        padding: 14px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        width: 100%;
+    }
+
+        form input[type="submit"]:hover {
+            background: #e3b477;
+        }
+
+address {
+    font-style: normal;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+    address strong {
+        color: black;
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    address a {
+        color: orange;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+        address a:hover {
+            color: #d17a00;
+            text-decoration: underline;
+        }
+
+.emails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.contact-deatails {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content:center;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+    text-align: left;
+}
+.main-address{
+    display:flex;
+    flex-direction:column;
+    justify-content:center
+}
+#title {
+    text-align: center;
+    color: orange;
+    font-size: xx-large;
+    margin-bottom: -50px;
+}
+
+.map-container {
+    margin-top: 25px;
+    text-align: center;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px;
+}
+.inner-heading{
+    font-size:x-large;
+    color:orange;
+    font-weight:bold;
+}
+.map-container iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 12px;
+}
+
+@media (max-width: 600px) {
+    .body {
+        margin-top: 100px;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    .btnsa {
+        padding: 8px 16px;
+    }
+
+    .contact-deatails {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .map-container {
+        max-width: 90%;
+        height: auto;
+    }
+}

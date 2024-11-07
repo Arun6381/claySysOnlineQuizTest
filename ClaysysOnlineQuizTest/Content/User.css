@@ -1,0 +1,110 @@
+﻿
+.navbar {
+    background-color: #34495e;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+}
+
+.navbar-brand {
+    color: #ecf0f1;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+}
+
+    .navbar-nav li {
+        margin-left: 20px;
+    }
+
+    .navbar-nav a {
+        color: #ecf0f1;
+        text-decoration: none;
+        padding: 10px 15px;
+        display: block;
+    }
+
+        .navbar-nav a:hover {
+            background-color: #34495e;
+            border-radius: 5px;
+        }
+
+.navbar-toggler {
+    display: none;
+    background-color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+    .navbar-toggler:focus {
+        outline: none;
+    }
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #34495e;
+        max-height: 0;
+        transition: max-height 0.5s ease-in-out;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+
+        .navbar-nav.active {
+            max-height: 300px;
+        }
+
+        .navbar-nav li {
+            margin-left: 0;
+            padding: 10px;
+            text-align: center;
+        }
+
+    .navbar-toggler {
+        display: block;
+        background-color: #ecf0f1;
+        border-radius: 5px;
+    }
+}
+
+
+.navbar-toggler .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #2c3e50;
+    transition: 0.4s;
+}
+
+.navbar-toggler.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggler.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.navbar-toggler.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}

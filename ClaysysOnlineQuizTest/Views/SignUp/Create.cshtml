@@ -1,0 +1,121 @@
+﻿@model ClaysysOnlineQuizTest.Models.SignUp
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/CustomCss/Home/SignUp.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<h1>User Registration</h1>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="form">
+            <div class="form-horizontal register">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName, new { @class = "control-label" })
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @id = "firstname" } })
+                    <span id="firstname-error" class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName, new { @class = "control-label" })
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @id = "lastname" } })
+                    <span id="lastname-error" class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateOfBirth, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control", type = "date", @id = "dob" })
+                    <span id="dob-error" class="error-message"></span>
+                </div>
+
+                <div class="form-group gender-option">
+                    @Html.LabelFor(model => model.Gender, new { @class = "control-label" })
+                    <div class="gender-options">
+                        @foreach (var gender in new[] { "Male", "Female", "Other" })
+                        {
+                            <div class="gender-options">
+                                @Html.RadioButtonFor(model => model.Gender, gender, new { @class = "form-check-input", id = "gender-" + gender.ToLower() })
+                                <label class="form-check-label" for="gender-@gender.ToLower()">@gender</label>
+                            </div>
+                        }
+                    </div>
+                    <span id="gender-error" class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EducationQualification, new { @class = "control-label" })
+                    @Html.EditorFor(model => model.EducationQualification, new { htmlAttributes = new { @class = "form-control", @id = "education" } })
+                    <span id="education-error" class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label" })
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", @id = "phone" } })
+                    <span id="phone-error" class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EmailId, new { @class = "control-label" })
+                    @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @id = "email" } })
+                    <span id="email-error" class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address, new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @id = "address" } })
+                    <span id="address-error" class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserState, "State", new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model.UserState, Model.State, "Select State", new { @class = "form-control", id = "stateDropdown" })
+                    <span id="state-error" class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserCity, "City", new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model.UserCity, Model.City, "Select City", new { @class = "form-control", id = "cityDropdown" })
+                    <span id="city-error" class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserName, new { @class = "control-label" })
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @id = "username" } })
+                    <span id="username-error" class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserPassword, new { @class = "control-label" })
+                    @Html.EditorFor(model => model.UserPassword, new { htmlAttributes = new { @class = "form-control", @id = "password" } })
+                    <span id="password-error" class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Confirm Password", new { @class = "control-label" })
+                    @Html.Editor("ConfirmPassword", new { htmlAttributes = new { @class = "form-control", @id = "confirm-password" } })
+                    <span id="confirm-password-error" class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="text-center">
+                        <button type="submit" class="btn" id="submitform">Sign up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="loginbtn">
+        <span>Already have an Account? </span>
+        <a href="@Url.Action("Login", "Login")" class="btn">Login</a>
+    </div>
+}
+
+
+
+<script src="~/Scripts/ClaySysQuizTest/SelectStateAndCity.js"></script>
+<script src="~/Scripts/ClaySysQuizTest/SignUpValidation.js"></script>

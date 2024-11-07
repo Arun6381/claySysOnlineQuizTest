@@ -1,0 +1,43 @@
+﻿@model ClaysysOnlineQuizTest.Models.AssignTest
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+    var sessionValueid = ViewBag.SessionValueid;
+}
+
+
+<link href="~/Content/CustomCss/User/UserMain.css" rel="stylesheet" />
+<div class="training-container">
+    <h2 class="main-heading">About the ClaySys Training Program</h2>
+    <div class="trainingimg"><img src="~/Content/images/userhome.jpg" /></div>
+    <section class="training-section">
+        <h2 class="sub-heading">Take a Test</h2>
+        <div class="button-container">
+            <button class="cta-button"><a href="@Url.Action("AllAssignedTest","User")">Available Tests</a></button>
+            @using (Html.BeginForm("Results", "TestResult", FormMethod.Post))
+            {
+                <input type="text" name="userId" value="@sessionValueid" style="display:none;" />
+                <button type="submit" class="cta-button">Test Result</button>
+            }
+        </div>
+    </section>
+    <section class="training-section">
+        <h3 class="section-heading">Overview of ClaySys Training Program</h3>
+        <p class="section-paragraph">
+            ClaySys offers a structured <span class="orange">one-month training</span> program designed to immerse participants in practical, hands-on learning experiences. During this training, candidates are provided with resources, projects, and mentorship to develop both technical and soft skills necessary for a successful career at ClaySys. The goal of the training is to prepare participants with the <span class="orange">skills and knowledge</span>  required to meet the company's standards and excel in a fast-paced, professional environment.
+        </p>
+    </section>
+
+    <section class="training-section">
+        <h3 class="section-heading">Testing and Skill Evaluation During Training</h3>
+        <p class="section-paragraph">
+            During training, the program <span class="orange">administrator assigns various tests</span> to the trainees. These tests are designed to evaluate each participant's understanding of the material covered and their ability to apply skills in realistic scenarios. These assignments allow the trainers to gauge each trainee's progress, helping identify strengths and areas for improvement. Completing these tests is an essential part of the training and contributes significantly to the overall performance evaluation.
+        </p>
+    </section>
+    <section class="training-section">
+        <h3 class="section-heading">Evaluation and Performance-Based Hiring</h3>
+        <p class="section-paragraph">
+            Throughout the training period, <spna class="orange">ClaySys closely evaluates</spna> each participant's performance. This assessment includes monitoring progress on assigned projects, technical problem-solving, and teamwork capabilities. Candidates who demonstrate strong performance, adaptability, and commitment during training stand a chance of being offered a permanent position on the ClaySys team. This performance-based hiring approach enables ClaySys to bring on team members who have proven their abilities and readiness for the role through real-world tasks and challenges faced during training.
+        </p>
+    </section>
+</div>

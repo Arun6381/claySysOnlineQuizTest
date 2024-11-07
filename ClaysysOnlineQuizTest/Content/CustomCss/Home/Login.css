@@ -1,0 +1,89 @@
+﻿.container {
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    justify-content: center; /* Center content vertically */
+    margin: auto;
+}
+
+.heading {
+    color: orange;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+input[type="password"],
+input[type="email"],
+input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    input:focus {
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        outline: none;
+    }
+
+.btn {
+    background-color: orange;
+    color: #fff;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn:hover {
+        background-color: darkorange;
+    }
+
+.text-center {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.text-danger {
+    color: #e74c3c;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 15px;
+        width:300px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+}
+
+input.invalid {
+    border: 2px solid red;
+}
+
+input.valid {
+    border: 2px solid orange;
+}

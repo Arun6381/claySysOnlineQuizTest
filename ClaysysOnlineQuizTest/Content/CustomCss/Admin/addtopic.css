@@ -1,0 +1,79 @@
+﻿.form-horizontal {
+    max-width:fit-content;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid orange;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px orange;
+   
+}
+
+.heading {
+    text-align: center;
+    color: orange;
+}
+
+h4 {
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.control-label {
+    font-weight: bold;
+    color: #333;
+    width: 100px;
+}
+
+.form-control {
+    width: 80%;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+    .form-control:focus {
+        border-color: orange;
+        outline: none;
+    }
+
+.text-danger {
+    color: red;
+}
+
+.btn {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .btn:hover {
+        background-color: darkorange;
+    }
+
+a {
+    text-decoration: none;
+    color: orange;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+.createbtn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:10px auto;
+}

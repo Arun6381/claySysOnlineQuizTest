@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ClaysysOnlineQuizTest.Models.Topic>
+@{
+    ViewBag.Title = "All Topics";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+<link href="~/Content/CustomCss/Admin/topic.css" rel="stylesheet" />
+<span class="heading">@TempData["Message"]</span>
+
+<h2 class="heading">All Topics</h2>
+
+<span class="add">
+    <a href="@Url.Action("Add","Topic")">Add New Topic</a>
+</span>
+
+
+
+<div class="topics-container">
+    @foreach (var topic in Model)
+    {
+        <div class="topic-card">
+            <div class="topic-info">
+
+                <div class="topic-image">
+                    @if (!string.IsNullOrEmpty(topic.ImageBase64))
+                    {
+                        <img src="@topic.ImageBase64" alt="@topic.TopicName" />
+                    }
+                    else
+                    {
+                        <img src="~/Content/images/default-image.png" alt="Default Image" />
+                    }
+                </div>
+                <h3>@topic.TopicName</h3>
+                <p>Created At: @topic.CreatedAt.ToString("g")</p>
+            </div>
+            <div class="topic-actions">
+                <p class="add">
+                    @Html.ActionLink("Create Test", "Create", "Test", new { topicName = topic.TopicName }, null)
+                </p>
+                <p class="add">
+                    @Html.ActionLink("View Tests", "GetTestByTopicId", "Test", new { topicId = topic.TopicID }, null)
+                </p>
+                @*@Html.ActionLink("View Tests", "GetTestByTopicId", "Test", new { topicId = topic.TopicID }, null)*@
+
+                @using (Html.BeginForm("Delete", "Topic", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("topicName", topic.TopicName)
+                    <button type="submit">Remove Topic</button>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+
+
+@*<p>
+        @Html.ActionLink("Remove a Topic", "Delete", "Topic")
+    </p>*@

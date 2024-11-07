@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ClaysysOnlineQuizTest.Models.Question>
+
+@{
+    ViewBag.Title = "GetQuestionsByTest";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+<link href="~/Content/CustomCss/Admin/GetallQuestions.css" rel="stylesheet" />
+<h2 class="heading">Get Questions By Test</h2>
+
+<div class="questions-container">
+    @foreach (var item in Model)
+    {
+        <div class="question-item">
+            <div class="question-field">
+                <strong>@Html.DisplayNameFor(model => model.TestName):</strong>
+                @Html.DisplayFor(modelItem => item.TestName)
+            </div>
+            <div class="question-field">
+                <strong>@Html.DisplayNameFor(model => model.QuestionText):</strong>
+                @Html.DisplayFor(modelItem => item.QuestionText)
+            </div>
+            <div class="question-field">
+                <strong>@Html.DisplayNameFor(model => model.Option1):</strong>
+                @Html.DisplayFor(modelItem => item.Option1)
+            </div>
+            <div class="question-field">
+                <strong>@Html.DisplayNameFor(model => model.Option2):</strong>
+                @Html.DisplayFor(modelItem => item.Option2)
+            </div>
+            <div class="question-field">
+                <strong>@Html.DisplayNameFor(model => model.Option3):</strong>
+                @Html.DisplayFor(modelItem => item.Option3)
+            </div>
+            <div class="question-field">
+                <strong>@Html.DisplayNameFor(model => model.Option4):</strong>
+                @Html.DisplayFor(modelItem => item.Option4)
+            </div>
+            <div class="question-field">
+                <strong>@Html.DisplayNameFor(model => model.CorrectOption):</strong>
+                @Html.DisplayFor(modelItem => item.CorrectOption)
+            </div>
+            <div class="question-field">
+                <strong>@Html.DisplayNameFor(model => model.Score):</strong>
+                @Html.DisplayFor(modelItem => item.Score)
+            </div>
+            <div class="question-field">
+                <strong>@Html.DisplayNameFor(model => model.CreatedAt):</strong>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </div>
+            <div class="question-actions">
+                @Html.ActionLink("Delete", "Delete", new { id = item.QuestionID }, new { @class = "delete-link" })
+            </div>
+        </div>
+    }
+</div>
+
+

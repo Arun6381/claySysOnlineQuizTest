@@ -1,0 +1,146 @@
+﻿@using System.Linq
+@model IEnumerable<ClaysysOnlineQuizTest.Models.Question>
+@{
+    ViewBag.Title = "Questions";
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+<link href="~/Content/CustomCss/User/questions.css" rel="stylesheet" />
+@if (ViewBag.NoAssignedTestsMessage != null)
+{
+    <p>@ViewBag.NoAssignedTestsMessage</p>
+}
+else if (Model == null || !Model.Any())
+{
+    <h4>No questions assigned.</h4>
+}
+else
+{
+    <h2 class="testname"> @Model.First().TestName</h2>
+    <div id="timer">Time Remaining: <span id="time">10:00</span></div>
+
+    <form id="quizForm" method="post" action="@Url.Action("InsertResult", "TestResult")">
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            <div class="question" id="question_@i" style="display: @(i == 0 ? "block" : "none")">
+                <h4>Question @(i + 1): @Model.ElementAt(i).QuestionText</h4>
+                <div>
+                    <label>
+                        <input type="radio" name="answers[@(i)].UserAnswer" value="1" required />
+                        @Model.ElementAt(i).Option1
+                    </label><br />
+                    <label>
+                        <input type="radio" name="answers[@(i)].UserAnswer" value="2" />
+                        @Model.ElementAt(i).Option2
+                    </label><br />
+                    <label>
+                        <input type="radio" name="answers[@(i)].UserAnswer" value="3" />
+                        @Model.ElementAt(i).Option3
+                    </label><br />
+                    <label>
+                        <input type="radio" name="answers[@(i)].UserAnswer" value="4" />
+                        @Model.ElementAt(i).Option4
+                    </label>
+                </div>
+                <input type="hidden" name="answers[@(i)].CorrectOption" value="@Model.ElementAt(i).CorrectOption" />
+                <input type="hidden" name="answers[@(i)].TestName" value="@Model.ElementAt(i).TestName" />
+            </div>
+        }
+
+        <div>
+            <button type="button" id="prevButton" style="display: none;">Previous Question</button>
+            <button type="button" id="nextButton">Next Question</button>
+            <button type="submit" class="btn btn-primary" style="display: none;" id="submitButton">Submit</button>
+        </div>
+    </form>
+}
+
+<script>
+    let timeLimit = 600;
+    const timerElement = document.getElementById('time');
+    const timerInterval = setInterval(() => {
+        const minutes = Math.floor(timeLimit / 60);
+        const seconds = timeLimit % 60;
+
+        timerElement.innerText = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+        if (timeLimit <= 0) {
+            clearInterval(timerInterval);
+            document.getElementById("quizForm").submit();
+        }
+
+        timeLimit--;
+    }, 1000);
+
+    let currentQuestionIndex = 0;
+    const totalQuestions = @Model.Count();
+
+    document.getElementById("nextButton").addEventListener("click", function () {
+        const currentQuestion = document.getElementById(`question_${currentQuestionIndex}`);
+        if (currentQuestionIndex < totalQuestions - 1) {
+            currentQuestion.style.display = "none";
+            currentQuestionIndex++;
+            document.getElementById(`question_${currentQuestionIndex}`).style.display = "block";
+
+            console.log("Current Question Index after Next: ", currentQuestionIndex);
+
+            if (currentQuestionIndex === totalQuestions - 1) {
+                document.getElementById("nextButton").style.display = "none";
+                document.getElementById("submitButton").style.display = "inline"; // Show submit button
+            }
+            document.getElementById("prevButton").style.display = "inline";
+        }
+    });
+
+
+    document.getElementById("prevButton").addEventListener("click", function() {
+        const currentQuestion = document.getElementById(`question_${currentQuestionIndex}`);
+        if (currentQuestionIndex > 0) {
+            currentQuestion.style.display = "none";
+            currentQuestionIndex--;
+            document.getElementById(`question_${currentQuestionIndex}`).style.display = "block";
+
+            if (currentQuestionIndex === 0) {
+                document.getElementById("prevButton").style.display = "none";
+            }
+            document.getElementById("nextButton").style.display = "inline";
+            document.getElementById("submitButton").style.display = "none";
+        }
+    });
+
+    function validateAllQuestionsAnswered() {
+        for (let i = 0; i < totalQuestions; i++) {
+            const options = document.getElementsByName(`answers[${i}].UserAnswer`);
+            let answered = false;
+            for (const option of options) {
+                if (option.checked) {
+                    answered = true;
+                    break;
+                }
+            }
+            if (!answered) {
+                alert("Please answer all questions before submitting.");
+                return false;
+            }
+        }
+        return true;
+    }
+    function clearRadioButtons() {
+        const radios = document.querySelectorAll('input[type="radio"]');
+        radios.forEach(radio => radio.checked = false);
+    }
+
+    document.getElementById("submitButton").addEventListener("click", function (event) {
+        event.preventDefault();
+
+        if (validateAllQuestionsAnswered()) {
+            document.getElementById("quizForm").submit();
+
+            setTimeout(() => {
+                clearRadioButtons();
+            }, 2000);
+        }
+    });
+
+
+
+</script>
